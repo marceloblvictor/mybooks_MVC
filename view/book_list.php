@@ -7,7 +7,11 @@ $books = $model->get_BookList($_SESSION["user_id"]);
 ?>
 
 <ul>
-    <?php 
+    <?php
+    
+       if(empty($books)) {
+         echo "<p> Ainda não há livros cadastrados. </p>";
+       }
        
        foreach ($books as $title => $book)  {  
 

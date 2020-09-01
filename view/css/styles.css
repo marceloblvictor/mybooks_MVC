@@ -1,12 +1,16 @@
 * {
     list-style: none;
     box-sizing: border-box;
+    
+    
 }
 
 body {
     margin-top: 50px;
     height: 600px;
     background-color: rgb(209, 209, 209);
+    
+   
 }
 
 nav {
@@ -67,7 +71,7 @@ nav ul {
 .btn-danger {
     margin-right: 40px;
   
-  }
+}
 
   .nav-logged {
     color: #007bff;

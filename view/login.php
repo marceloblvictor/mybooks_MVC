@@ -31,8 +31,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Username não foi encontrado na DB
     if (empty($user_row)) {
+
         if (!empty(trim($_POST["username_input"]))){
+
             $username_error = "Usuário e/ou senha inválido(s).";
+
         }     
         
     }
@@ -40,13 +43,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Username encontrado na DB. Vamos verificar se o password digitado foi o correto:
     else {
 
-        // necessário implementar password_verify quando a página de registrar estiver pronta!
-        //$is_password_valid = password_verify($password_attempt, $user["password"]);
+        $is_password_valid = password_verify($password_attempt, $user_row["password"]);
 
-        //if ($is_password_valid) {
-          if ($user_row["password"] === $password_attempt) {
+        if ($is_password_valid) {  
 
-                        
             $_SESSION['user_id'] = $user_row['id'];
             $_SESSION['username'] = $user_row['username'];
             $_SESSION['logged_in'] = time();
@@ -78,4 +78,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="submit" class="btn btn-primary" value="OK">
 </form>
 <br>
-<a href="view/registration.php"><button class="btn btn-primary">CRIAR CONTA</button></a>
+<a href="registration.php"><button class="btn btn-primary">CRIAR CONTA</button></a>
