@@ -3,11 +3,9 @@ include_once "model/Book.php";
 include_once "model/User.php";
 
 
-
-
 class Model {
 
-    public function get_BookList($user_id) {
+    public function getBookList($user_id) {
 
         $result = array();
 
@@ -27,17 +25,13 @@ class Model {
         return $result;
     }  
 
-    public function get_Book($title) {
+    public function getBook($title) {
         
-          
-
         return $all_users[$title];  
     }
 
     public function get_UserList() {
 
-        
-        
         return array(
             "joao" => new User("joao", "secret", "20/02 12:30:12"),
             "maria" => new User("maria", "secret2", "10/05 01:20:46"),
@@ -50,8 +44,6 @@ class Model {
 
         return $all_users[$username];  
     }
-
-
           
 } 
 ?>

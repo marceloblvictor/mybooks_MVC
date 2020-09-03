@@ -1,8 +1,6 @@
 <?php
 
-$model = new Model();
-
-$books = $model->get_BookList($_SESSION["user_id"]);
+$books = $controller->context["books"];
 
 ?>
 

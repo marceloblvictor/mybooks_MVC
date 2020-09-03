@@ -1,8 +1,3 @@
-<?php
-
-
-?>
-
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -36,7 +31,7 @@
 
   <section class=container-section>
 
-    <?php include $content; ?>
+    <?php global $controller; include $controller->content; ?>
 
   </section>
 
