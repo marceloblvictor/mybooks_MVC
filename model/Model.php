@@ -1,6 +1,5 @@
 <?php
 include_once "model/Book.php";
-include_once "model/User.php";
 
 
 class Model {
@@ -9,40 +8,53 @@ class Model {
 
         $result = array();
 
-        require_once "config.php";       
+        require_once "config.php";  
         
-        $sql = "SELECT title, author, description FROM book WHERE user = :user_id";        
+        global $pdo;
+        
+        $sql = "SELECT id, title, author, description, user FROM book WHERE user = :user_id";        
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);   
         $stmt->execute();
 
         while ($row = $stmt->fetch()) {
 
-            $result[$row["title"]] = new Book($row["title"], $row["author"], $row["description"]);
+            $result[$row["title"]] = new Book($row["title"], $row["author"], $row["description"], $row["id"], $row["user"]);
 
         }
          
         return $result;
-    }  
+    } 
 
-    public function getBook($title) {
+    // Obtém um livro do banco de dados com o id;
+    public function getBook($book_id) {
         
-        return $all_users[$title];  
+        require_once "config.php";
+        
+        global $pdo;
+        
+        $sql = "SELECT id, title, author, description, user FROM book WHERE id = :id";        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':id', $book_id);   
+        $stmt->execute(); 
+
+        $row = $stmt->fetch();
+
+        $result = new Book($row["title"], $row["author"], $row["description"], $row["id"], $row["user"]);
+
+        return $result;
+
+
     }
 
-    public function get_UserList() {
+    // Checa se o usuário autenticado é dono do livro requisitado
+    public function is_user_the_owner($book_id, $user_id) {
 
-        return array(
-            "joao" => new User("joao", "secret", "20/02 12:30:12"),
-            "maria" => new User("maria", "secret2", "10/05 01:20:46"),
-        );
-    }
+        $book = $this->getBook($book_id);
 
-    public function get_User($username) {  
+        return $book->get_user() === $user_id;
         
-        $all_users = $this->getUserList();  
 
-        return $all_users[$username];  
     }
           
 } 

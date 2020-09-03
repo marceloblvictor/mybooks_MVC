@@ -2,6 +2,7 @@
 require_once "config.php";
 require_once "model/Model.php";
 
+
 $username_attempt = $username_error = "";
 $password_attempt = $password_error = "";
 
@@ -21,6 +22,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         $password_attempt = trim($_POST["password_input"]);
     }
+
+    global $pdo;
 
     $sql = "SELECT id, username, password FROM user WHERE username = :username";
     $stmt = $pdo->prepare($sql);

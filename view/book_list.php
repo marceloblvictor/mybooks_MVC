@@ -4,6 +4,8 @@ $books = $controller->context["books"];
 
 ?>
 
+<a href="books/create/" class='new-book-btn'><button class="btn btn-success">NOVO LIVRO</button></a>
+<hr class="my-4">
 <ul>
     <?php
     
@@ -18,13 +20,14 @@ $books = $controller->context["books"];
                 <h5>" . $book->get_title() . "</h5>
                 <p>Autor: " . $book->get_author() . "</p>
                 <p>Descrição: " . $book->get_description() . "</p>
-                <a href='books/view/" . $book->get_title() . "'><button class='btn btn-primary'> Ver Mais</button></a>
+                <a href='books/" . $book->get_id() . "'><button class='btn btn-primary'> Ver Mais</button></a>
                 <hr class='my-4'>
               </li>";
 
-        }  
-      
+        }
     ?>
+
+    
 
 </ul>
 
