@@ -4,7 +4,7 @@ $books = $controller->context["books"];
 
 ?>
 
-<a href="books/create/" class='new-book-btn'><button class="btn btn-success">NOVO LIVRO</button></a>
+<a href="books/create" class='new-book-btn'><button class="btn btn-success">NOVO LIVRO</button></a>
 <hr class="my-4">
 <ul>
     <?php

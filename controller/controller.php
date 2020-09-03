@@ -111,6 +111,11 @@ class Controller {
 
      }
 
+     private function createBook() {
+
+          $this->content = "view/book_create.php";
+     }
+
      // helper methods:
 
      public function is_user_authenticated() {

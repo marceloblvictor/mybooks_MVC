@@ -110,7 +110,7 @@
           <?php 
             if (isset($_SESSION["logged_in"]) && isset($_SESSION["user_id"])) {
                 
-                echo "<li class='nav-item'><a class='nav-link' href='logout.php'>Logout</a></li>";
+                echo "<li class='nav-item'><a class='nav-link' href='/mybooks/logout.php'>Logout</a></li>";
                 echo "<li class='nav-item nav-logged'>Olá, " . $_SESSION['username'] . "!</li>";
             }
           ?>
