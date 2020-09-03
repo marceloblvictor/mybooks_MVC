@@ -82,7 +82,7 @@ class Model {
         require_once "config.php";
         global $pdo;
 
-        $sql = "DELETE * FROM book WHERE id = :book_id";
+        $sql = "DELETE FROM book WHERE id = :book_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':book_id', $book_id); 
 

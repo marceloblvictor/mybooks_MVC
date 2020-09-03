@@ -116,6 +116,13 @@ class Controller {
           $this->content = "view/book_create.php";
      }
 
+     private function deleteBook($book_id) {
+
+          $this->context["book_id"] = $book_id;
+          $this->content = "view/book_delete.php";
+
+     }
+
      // helper methods:
 
      public function is_user_authenticated() {

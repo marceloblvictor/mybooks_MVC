@@ -105,7 +105,7 @@
   <nav class="navbar fixed-top navbar-light bg-light">
         <ul>
           <li class="nav-item">
-              <a class="nav-link" href="index.php">Meus Livros</a>
+              <a class="nav-link" href="/mybooks/index.php">Meus Livros</a>
           </li>    
           <?php 
             if (isset($_SESSION["logged_in"]) && isset($_SESSION["user_id"])) {
