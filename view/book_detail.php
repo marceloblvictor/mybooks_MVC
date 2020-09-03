@@ -1,6 +1,4 @@
  <?php
-
-
  
     $book = $controller->context["book"];
 

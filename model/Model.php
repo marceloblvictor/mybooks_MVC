@@ -47,6 +47,48 @@ class Model {
 
     }
 
+    function createBook($title, $author, $description, $user_id) {
+
+        require_once "config.php";
+        
+        global $pdo;
+        $sql = "INSERT INTO book (title, author, description, user) VALUES (:title, :author, :description, :user_id)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':title', $title); 
+        $stmt->bindValue(':author', $author); 
+        $stmt->bindValue(':description', $description); 
+        $stmt->bindValue(':user_id', $user_id); 
+
+        return $stmt->execute();
+    }
+
+    function editBook($title, $author, $description, $book_id) {
+
+        require_once "config.php";
+        
+        global $pdo;
+        $sql = "UPDATE book SET title = :title, author = :author, description = :description WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':title', $title); 
+        $stmt->bindValue(':author', $author); 
+        $stmt->bindValue(':description', $description); 
+        $stmt->bindValue(':book_id', $id_id); 
+
+        return $stmt->execute();
+    }
+
+    function deleteBook($book_id) {
+
+        require_once "config.php";
+        global $pdo;
+
+        $sql = "DELETE * FROM book WHERE id = :book_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':book_id', $book_id); 
+
+        return $stmt->execute();
+    }
+
     // Checa se o usuário autenticado é dono do livro requisitado
     public function is_user_the_owner($book_id, $user_id) {
 
