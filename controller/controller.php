@@ -123,6 +123,12 @@ class Controller {
 
      }
 
+     private function editBook($book_id) {
+
+          $this->context["book"] = $this->model->getBook($book_id);
+          $this->content = "view/book_edit.php";
+     }
+
      // helper methods:
 
      public function is_user_authenticated() {

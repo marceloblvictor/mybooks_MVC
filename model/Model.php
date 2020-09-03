@@ -67,12 +67,12 @@ class Model {
         require_once "config.php";
         
         global $pdo;
-        $sql = "UPDATE book SET title = :title, author = :author, description = :description WHERE id = :id";
+        $sql = "UPDATE book SET title = :title, author = :author, description = :description WHERE id = :book_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':title', $title); 
         $stmt->bindValue(':author', $author); 
         $stmt->bindValue(':description', $description); 
-        $stmt->bindValue(':book_id', $id_id); 
+        $stmt->bindValue(':book_id', $book_id); 
 
         return $stmt->execute();
     }
